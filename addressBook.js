@@ -1,3 +1,6 @@
+const input = require("prompt-sync");
+const prompt = input();
+
 class AddressBookContact{
     constructor (firstName, lastName, address, city, state, zipCode, phoneNumber, email) {
         this.firstName = firstName;
@@ -133,7 +136,7 @@ class AddressBookContact{
         " ,zipCode="+this.zipCode+" ,phoneNumber="+this.phoneNumber+" ,email="+this.email;
     }
 }
-let addressBookArray = new Array();
+let addressBookArray = [];
 let contact;
 try {
     contact = new AddressBookContact("Shalini", "Pandey", "Asna", 
@@ -148,5 +151,92 @@ try {
 } catch (e) {
     console.error(e);
 }
+function addPerson() {
+    let firstName = prompt("enter the first name:");
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].firstName == firstName) {
+            console.log(" person already present!!!");
+            addPerson()
+        }
+    }
+    let lastName = prompt("enter the last name: ");
+    let address = prompt("enter the address: ");
+    let city = prompt("enter the city: ");
+    let state = prompt("enter the state: ");
+    let zip = Number(prompt("enter the zip: "));
+    let phoneNumber = Number(prompt("enter the phone number: "));
+    let mail = prompt("enter mail id:");
+    let Person = new AddressBookContact(firstName, lastName, address, city, state, zip, phoneNumber, mail)
+    addressBookArray.push(Person)
+}
+function editByName() {
+    let firstNameEdit = prompt("enter the first name whose detail you want to change:");
+    let personToEdit;
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].firstName == firstNameEdit) {
+            personToEdit = addressBookArray[i];
+            if (personToEdit != null) {
+                let input = 1;
+                while (input != 0) {
+                    console.log("\nChoose to edit: \n1. First Name \n2. Last Name \n3. Address \n4. City \n5. State \n6. Zipcode \n7. Phone Number \n8. Email \n9. exit");
+                    input = prompt("Enter Your Choice: ");
+                    input = parseInt(input);
+                    switch (input) {
+                        case 1: let newFirstName = prompt("Enter the firstname: ");
+                            personToEdit.firstName = newFirstName;
+                            break;
+                        case 2: let newLastName = prompt("Enter the last Name: ");
+                            personToEdit.lastName = newLastName;
+                            break;
+                        case 3: let NewAddress = prompt("Enter the address: ");
+                            personToEdit.address = newAddress;
+                            break;
+                        case 4: let newCity = prompt("Enter the city: ");
+                            personToEdit.city = newCity;
+                            break;
+                        case 5: let newState = prompt("Enter the state: ");
+                            personToEdit.state = newState;
+                            break;
+                        case 6: let newZip = prompt("Enter the pincode: ");
+                            personToEdit.zip = newZip;
+                            break;
+                        case 7: let newPhoneNumber = prompt("Enter the phone number: ");
+                            personToEdit.phoneNumber = newPhoneNumber;
+                            break;
+                        case 8: let newMail = prompt("Enter the email: ");
+                            personToEdit.email = newMail;
+                            break;
+                        case 9:
+                            input = 0;
+                    }
+                }
+            }
+        }
 
-console.log(addressBookArray.toString());
+    }
+}
+let choice = 1;
+
+while (choice != 0) {
+    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Exit");
+    choice = prompt("enter your choice : ");
+    choice = parseInt(choice);
+
+    switch (choice) {
+        case 1:
+            console.log(addressBookArray);
+            break;
+        case 2:
+            addPerson();
+            console.log(addressBookArray);
+            break;
+        case 3:
+            editByName();
+            console.log(addressBookArray);
+            break;
+        case 4:
+            choice = 0;
+    }
+    
+}
+
