@@ -228,10 +228,20 @@ function countNumberOfPerson() {
     let count = addressBookArray.length;
     console.log("number of person in addressbook : " + count);
 }
+function searchByCity() {
+    let cityForSearch = prompt("enter the city of which you want Contacts: ");
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].city == cityForSearch) {
+            console.log(addressBookArray[i]);
+        }
+    }
+
+}
+
 let choice = 1;
 
 while (choice != 0) {
-    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.exit.");
+    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.Search By City \n7.exit.");
     choice = prompt("enter your choice : ");
     choice = parseInt(choice);
 
@@ -250,10 +260,13 @@ while (choice != 0) {
         case 4:
             deleteByName();
             console.log(addressBookArray);
+            break;
         case 5:
             countNumberOfPerson();
-            console.log(addressBookArray);
+            break;
         case 6:
+            searchByCity();
+        case 7:
             choice = 0;
     }
     
