@@ -251,12 +251,16 @@ function sortAlphabaticaly() {
     let sortedList = addressBookArray.sort();
     console.log(sortedList);
 }
+function sortByCity() {
+    sortedList = addressBookArray.slice().sort((a,b)=>(a.city).localeCompare(b.city));
+    console.log(sortedList);
+}
 
 
 let choice = 1;
 
 while (choice != 0) {
-    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.Search By City. \n7.Get Count By City \n8.Sort Alphabetically \n9.exit.");
+    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.Search By City. \n7.Get Count By City \n8.Sort Alphabetically \n9.Sort by city.\n10.EXIT");
     choice = prompt("enter your choice : ");
     choice = parseInt(choice);
 
@@ -281,12 +285,17 @@ while (choice != 0) {
             break;
         case 6:
             searchByCity();
-         case 7:
+            break;
+        case 7:
             countPersonByCity();
-         case 8:
+            break;
+        case 8:
              sortAlphabaticaly();
-
+             break;
         case 9:
+            sortByCity();
+            break;
+        case 10:
             choice = 0;
     }
     
