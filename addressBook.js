@@ -215,10 +215,19 @@ function editByName() {
 
     }
 }
+function deleteByName() {
+    let firstNameForDelete = prompt("enter the first name whose detail you want to delete:");
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].firstName == firstNameForDelete) {
+            addressBookArray.splice(i, 1);
+            i--
+        }
+    }
+}
 let choice = 1;
 
 while (choice != 0) {
-    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Exit");
+    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.exit.");
     choice = prompt("enter your choice : ");
     choice = parseInt(choice);
 
@@ -235,6 +244,9 @@ while (choice != 0) {
             console.log(addressBookArray);
             break;
         case 4:
+            deleteByName();
+            console.log(addressBookArray);
+        case 5:
             choice = 0;
     }
     
