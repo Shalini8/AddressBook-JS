@@ -133,8 +133,20 @@ class AddressBookContact{
         " ,zipCode="+this.zipCode+" ,phoneNumber="+this.phoneNumber+" ,email="+this.email;
     }
 }
-
-let addressBook = new AddressBookContact("Shalini", "Pandey", "Asna", 
+let addressBookArray = new Array();
+let contact;
+try {
+    contact = new AddressBookContact("Shalini", "Pandey", "Asna", 
     "jagdalpur", "Chhattisgarh", "494001", "9329000000", "s@gmail.com");
+    addressBookArray.push(contact);
+    contact = new AddressBookContact("Ragini", "Pandey", "AvniVihar", 
+    "Raipur", "Chhattisgarh", "494001", "9329000000", "r@gmail.com");
+    addressBookArray.push(contact);
+    contact = new AddressBookContact("Sunita", "Pandey", "Mainpat", 
+    "ambikapur", "Chhattisgarh", "494001", "9329000000", "s@gmail.com");
+    addressBookArray.push(contact);
+} catch (e) {
+    console.error(e);
+}
 
-console.log(addressBook.toString());
+console.log(addressBookArray.toString());
