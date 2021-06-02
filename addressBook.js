@@ -237,11 +237,22 @@ function searchByCity() {
     }
 
 }
+function countPersonByCity() {
+    let cityForSearch = prompt("Enter the city of which you want Count: ");
+    count = 0;
+    for (let i = 0; i < addressBookArray.length; i++) {
+        if (addressBookArray[i].city == cityForSearch) {
+            count++;
+        }
+    }
+    console.log("Total number of people live in " + cityForSearch + " : " + count);
+}
+
 
 let choice = 1;
 
 while (choice != 0) {
-    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.Search By City \n7.exit.");
+    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.Search By City \n7.Get Count By City \n8.exit.");
     choice = prompt("enter your choice : ");
     choice = parseInt(choice);
 
@@ -266,7 +277,9 @@ while (choice != 0) {
             break;
         case 6:
             searchByCity();
-        case 7:
+         case 7:
+            countPersonByCity();
+        case 8:
             choice = 0;
     }
     
