@@ -155,7 +155,7 @@ function addPerson() {
     let firstName = prompt("enter the first name:");
     for (let i = 0; i < addressBookArray.length; i++) {
         if (addressBookArray[i].firstName == firstName) {
-            console.log(" person already present!!!");
+            console.log(" SOrry this person already exists in addressBook !! try adding another Name");
             addPerson()
         }
     }
