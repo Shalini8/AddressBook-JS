@@ -224,10 +224,14 @@ function deleteByName() {
         }
     }
 }
+function countNumberOfPerson() {
+    let count = addressBookArray.length;
+    console.log("number of person in addressbook : " + count);
+}
 let choice = 1;
 
 while (choice != 0) {
-    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.exit.");
+    console.log("1.Display \n2.Add Person. \n3.Edit Person. \n4.Delete Person. \n5.CountNumberOfPerson. \n6.exit.");
     choice = prompt("enter your choice : ");
     choice = parseInt(choice);
 
@@ -247,6 +251,9 @@ while (choice != 0) {
             deleteByName();
             console.log(addressBookArray);
         case 5:
+            countNumberOfPerson();
+            console.log(addressBookArray);
+        case 6:
             choice = 0;
     }
     
